@@ -1,2 +1,1 @@
-# Placeholder — after AdSense approval, replace with your line, e.g.:
-# google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
+google.com, pub-7134809424944016, DIRECT, f08c47fec0942fa0
