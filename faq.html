@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0e1621">
+  <meta name="description" content="WhatsApp Sohbet İstatistikleri hakkında sık sorulan sorular: gizlilik, veri, dosya biçimleri. FAQ about WhatsApp chat statistics: privacy, data, file formats.">
+  <title>SSS · FAQ — WhatsApp Sohbet İstatistikleri</title>
+  <style>
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      background:#0e1621;color:#e8eef4;max-width:640px;margin:0 auto;padding:32px 20px;line-height:1.6}
+    h1{font-size:1.5em}h2{font-size:1.05em;margin-top:1.5em}
+    a{color:#26d0ce}hr{border:none;border-top:1px solid #2a3947;margin:2.2em 0}
+    small{color:#9fb0bf}
+    .nav{margin-top:2.4em;font-size:.9em}
+  </style>
+</head>
+<body>
+  <p><a href="./">← Uygulamaya dön / Back to the app</a></p>
+
+  <h1>Sık Sorulan Sorular</h1>
+
+  <h2>Mesajlarım bir yere yükleniyor mu?</h2>
+  <p>Hayır. Dosyan tarayıcının içinde, kendi cihazında işlenir. Sunucuya hiçbir mesaj, isim veya dosya gitmez.
+    İnterneti kapatıp denemen bile mümkün — uygulama çevrimdışı da çalışır (PWA).</p>
+
+  <h2>WhatsApp bu uygulamayı görebilir mi? Hesabıma bir şey olur mu?</h2>
+  <p>Uygulama WhatsApp'a hiç bağlanmaz; yalnızca senin dışa aktardığın metin dosyasını okur.
+    WhatsApp hesabınla hiçbir etkileşimi yoktur.</p>
+
+  <h2>"Kayıtlı sohbetler" nerede saklanıyor?</h2>
+  <p>Sadece kendi tarayıcının yerel depolamasında (IndexedDB). Listedeki çöp kutusuyla istediğin zaman silebilirsin;
+    tarayıcı verilerini temizlemek de hepsini kaldırır.</p>
+
+  <h2>Hangi dosyaları kabul ediyor?</h2>
+  <p>WhatsApp'ın ürettiği <b>.zip</b> veya içindeki <b>_chat.txt</b>. "Medya olmadan" dışa aktarım yeterli ve çok daha küçük.
+    Hem iPhone hem Android dışa aktarımları, hem grup hem birebir sohbetler desteklenir.</p>
+
+  <h2>Zip yüklenmiyor / hata veriyor. Neden?</h2>
+  <p>En sık sebep, WhatsApp yerine başka bir uygulamanın oluşturduğu zip'i seçmek. WhatsApp'ın kendi
+    "Sohbeti Dışa Aktar" çıktısını kullandığından emin ol. Ayrıntılı adımlar <a href="guide.html">rehberde</a>.</p>
+
+  <h2>Grup sohbetlerinde ne değişiyor?</h2>
+  <p>Özet, kişi bazlı sıralamalarla gelir (en çok konuşan, hayalet üye, gece kuşu…); Wrapped da grup sürümünü oynatır.
+    Uyum puanı gibi ikili metrikler yalnızca birebir sohbetlerde görünür.</p>
+
+  <h2>İsimleri gizleyebilir miyim?</h2>
+  <p>Evet — 🕶️ düğmesi tüm isimleri takma adlarla değiştirir; ekran görüntüsü ve paylaşım kartları da anonim olur.</p>
+
+  <h2>Bu site WhatsApp'ın resmî bir ürünü mü?</h2>
+  <p>Hayır. Bu bağımsız bir araçtır; WhatsApp veya Meta ile hiçbir bağlantısı yoktur. "WhatsApp" adı yalnızca
+    dosya biçimini tarif etmek için kullanılır.</p>
+
+  <h2>Ücretli mi?</h2>
+  <p>Hayır, tamamen ücretsiz. Site, masraflarını karşılamak için reklam gösterebilir — reklamlar sohbet verine erişemez
+    (bkz. <a href="privacy.html">gizlilik</a>).</p>
+
+  <hr>
+
+  <h1>Frequently Asked Questions</h1>
+
+  <h2>Are my messages uploaded anywhere?</h2>
+  <p>No. Your file is processed inside your browser, on your own device. No message, name, or file ever reaches a server.
+    You can even try it offline — the app works without a connection (it's a PWA).</p>
+
+  <h2>Can WhatsApp see this? Is my account at risk?</h2>
+  <p>The app never connects to WhatsApp; it only reads the text file you exported. It has zero interaction with your
+    WhatsApp account.</p>
+
+  <h2>Where are "saved chats" stored?</h2>
+  <p>Only in your browser's local storage (IndexedDB). Delete any of them with the trash icon, or clear your browser
+    data to remove everything.</p>
+
+  <h2>Which files are accepted?</h2>
+  <p>The <b>.zip</b> WhatsApp produces, or the <b>_chat.txt</b> inside it. "Without media" exports are enough and much
+    smaller. Both iPhone and Android exports work, for both group and 1-on-1 chats.</p>
+
+  <h2>My zip won't load. Why?</h2>
+  <p>The most common cause is picking a zip made by some other app. Make sure it's WhatsApp's own
+    "Export Chat" output. Step-by-step instructions are in the <a href="guide.html">guide</a>.</p>
+
+  <h2>What's different for group chats?</h2>
+  <p>The summary switches to per-person rankings (top talker, ghost member, night owl…), and Wrapped plays its group
+    edition. Pair metrics like the compatibility score only appear in 1-on-1 chats.</p>
+
+  <h2>Can I hide names?</h2>
+  <p>Yes — the 🕶️ button swaps all names for aliases; screenshots and share cards stay anonymous too.</p>
+
+  <h2>Is this an official WhatsApp product?</h2>
+  <p>No. This is an independent tool with no affiliation to WhatsApp or Meta. The name "WhatsApp" is used only to
+    describe the file format.</p>
+
+  <h2>Does it cost anything?</h2>
+  <p>No, it's completely free. The site may show ads to cover its costs — ads cannot access your chat data
+    (see <a href="privacy.html">privacy</a>).</p>
+
+  <hr>
+  <p class="nav"><a href="./">Uygulama / App</a> · <a href="guide.html">Rehber / Guide</a> · <a href="privacy.html">Gizlilik / Privacy</a></p>
+  <p><small>İletişim / Contact: gcagiran@solardetech.com</small></p>
+</body>
+</html>

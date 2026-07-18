@@ -1,3 +1,64 @@
-<!doctype html><meta charset="utf-8">
-<meta http-equiv="refresh" content="0;url=/whatsapp-stats/">
-<a href="/whatsapp-stats/">WhatsApp Sohbet İstatistikleri →</a>
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0e1621">
+  <!-- Standalone/app-like launch when added to the home screen (iOS lacks manifest display support
+       pre-16.4; these apple-* metas make add-to-home-screen open full-screen without Safari chrome). -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Sohbet İstat">
+  <title>WhatsApp Sohbet İstatistikleri</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="icon" href="icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="wrapped.css">
+  <script>
+    // AdSense (Auto ads): set to your publisher ID after approval, e.g. "ca-pub-1234567890123456".
+    const ADSENSE_PUB = "ca-pub-7134809424944016";
+    if (ADSENSE_PUB) {
+      const s = document.createElement("script");
+      s.async = true; s.crossOrigin = "anonymous";
+      s.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=" + ADSENSE_PUB;
+      document.head.appendChild(s);
+    }
+  </script>
+</head>
+<body>
+  <button id="langtoggle" title="Language">EN</button>
+  <button id="themetoggle" title="Theme">🎨</button>
+  <button id="anontoggle" class="hidden" title="Hide names">🕶️</button>
+  <div id="import" class="import">
+    <h1 id="iTitle">Sohbet İstatistikleri</h1>
+    <p id="iDesc">WhatsApp sohbetini <b>.zip</b> olarak dışa aktar ve buraya bırak. Her şey telefonunda işlenir — hiçbir veri hiçbir yere yüklenmez.</p>
+    <label class="drop" id="drop">
+      <div class="big">📂</div>
+      <b id="iPick">Sohbet .zip dosyasını seç</b>
+      <small id="iDrag">veya buraya sürükle</small>
+      <input type="file" id="file" accept=".zip,.txt,text/plain,application/zip" hidden>
+    </label>
+    <div id="busy" class="drop hidden"><div class="spin" style="margin:0 auto"></div><b id="iBusy" style="margin-top:12px">İşleniyor…</b></div>
+    <div class="err" id="err"></div>
+    <details id="guide" class="guide"></details>
+    <div id="history" class="history hidden"></div>
+  </div>
+
+  <div id="filter" class="filterbar hidden"></div>
+  <div id="tracker" class="tracker hidden"></div>
+  <div id="report" class="report wide hidden"></div>
+  <div id="share" class="share hidden"></div>
+  <footer class="sitenav">
+    <a href="guide.html">📖 Rehber · Guide</a>
+    <a href="faq.html">❓ SSS · FAQ</a>
+    <a href="privacy.html">🔒 Gizlilik · Privacy</a>
+  </footer>
+  <div id="wrapped" class="wrapped hidden"></div>
+
+  <script src="html2canvas.min.js" defer></script>
+  <script type="module" src="app.js"></script>
+  <script type="module" src="wrapped.js"></script>
+</body>
+</html>

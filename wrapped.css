@@ -1,0 +1,162 @@
+/* WhatsApp Wrapped — animated story deck. All selectors scoped under #wrapped so the report's
+   own .head/.sub/.tag/.big classes never collide. Vanilla CSS: keyframes only, no libs. */
+#wrapped.wrapped{position:fixed; inset:0; z-index:9999; display:flex; align-items:center; justify-content:center;
+  background:#000; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  color:#fff; user-select:none; -webkit-user-select:none}
+#wrapped.hidden{display:none}
+#wrapped .wphone{position:relative; width:100%; height:100%; max-width:460px; max-height:100dvh; overflow:hidden}
+@media(min-width:520px){ #wrapped .wphone{max-height:900px; border-radius:28px; box-shadow:0 30px 90px rgba(0,0,0,.6)} }
+
+#wrapped .wgrain{position:absolute; inset:0; z-index:6; pointer-events:none; opacity:.05; mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+#wrapped .slide{position:absolute; inset:0; display:none; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; padding:70px 30px 90px; background-size:200% 200%}
+#wrapped .slide.on{display:flex}
+@keyframes wbg{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes wzoom{from{opacity:0;transform:scale(1.14)}to{opacity:1;transform:none}}
+@keyframes wwipe{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes wpush{from{opacity:0;transform:translateX(46px)}to{opacity:1;transform:none}}
+#wrapped .slide.t-zoom{animation:wbg 12s ease infinite, wzoom .55s cubic-bezier(.2,.7,.2,1) both}
+#wrapped .slide.t-wipe{animation:wbg 12s ease infinite, wwipe .6s cubic-bezier(.2,.7,.2,1) both}
+#wrapped .slide.t-push{animation:wbg 12s ease infinite, wpush .5s cubic-bezier(.2,.7,.2,1) both}
+
+#wrapped .g-intro{background-image:linear-gradient(135deg,#1a2980,#26d0ce)}
+#wrapped .g-volume{background-image:linear-gradient(160deg,#093028,#237a57)}
+#wrapped .g-time{background-image:linear-gradient(160deg,#42275a,#734b6d)}
+#wrapped .g-first{background-image:linear-gradient(160deg,#355c7d,#6c5b7b,#c06c84)}
+#wrapped .g-streak{background-image:linear-gradient(160deg,#c31432,#ff512f)}
+#wrapped .g-3am{background-image:linear-gradient(160deg,#020111,#3a3a52)}
+#wrapped .g-word{background-image:linear-gradient(160deg,#00416a,#799f0c)}
+#wrapped .g-owl{background-image:linear-gradient(160deg,#0f0c29,#302b63,#24243e)}
+#wrapped .g-race{background-image:linear-gradient(160deg,#1f4037,#99f2c8)}
+#wrapped .g-emoji{background-image:linear-gradient(160deg,#ff6a00,#ee0979)}
+#wrapped .g-media{background-image:linear-gradient(160deg,#0f2027,#2c5364)}
+#wrapped .g-love{background-image:linear-gradient(160deg,#e53935,#e35d5b)}
+#wrapped .g-mood{background-image:linear-gradient(160deg,#0b486b,#f56217)}
+#wrapped .g-mile{background-image:linear-gradient(160deg,#141e30,#243b55)}
+#wrapped .g-award{background-image:linear-gradient(160deg,#603813,#b29f94)}
+#wrapped .g-spice{background-image:linear-gradient(160deg,#870000,#190a05)}
+#wrapped .g-arch{background-image:linear-gradient(160deg,#663dff,#aa00ff,#cc4499)}
+#wrapped .g-chapter{background-image:linear-gradient(160deg,#111,#2a2a2a)}
+#wrapped .g-final{background-image:linear-gradient(160deg,#8e2de2,#4a00e0)}
+
+#wrapped .kicker{font-size:14px; letter-spacing:.22em; text-transform:uppercase; opacity:.85; font-weight:700; margin-bottom:16px}
+#wrapped .big{font-size:clamp(56px,18vw,112px); font-weight:900; line-height:.95; letter-spacing:-.03em; text-shadow:0 6px 30px rgba(0,0,0,.35)}
+#wrapped .head{font-size:clamp(25px,6.6vw,38px); font-weight:800; line-height:1.08; margin:6px 0}
+#wrapped .sub{font-size:clamp(15px,4.2vw,19px); opacity:.92; margin-top:16px; max-width:23ch; line-height:1.42}
+#wrapped .emoji-hero{font-size:clamp(76px,25vw,146px); line-height:1; filter:drop-shadow(0 8px 24px rgba(0,0,0,.4))}
+#wrapped .tag{display:inline-block; margin-top:20px; padding:9px 18px; border-radius:999px; background:rgba(255,255,255,.16); backdrop-filter:blur(6px); font-weight:700; font-size:16px}
+
+#wrapped .slide.on .rise{animation:wrise .6s cubic-bezier(.2,.7,.2,1) both}
+#wrapped .slide.on .rise:nth-child(2){animation-delay:.12s} #wrapped .slide.on .rise:nth-child(3){animation-delay:.24s}
+#wrapped .slide.on .rise:nth-child(4){animation-delay:.36s} #wrapped .slide.on .rise:nth-child(5){animation-delay:.48s}
+@keyframes wrise{from{opacity:0; transform:translateY(26px) scale(.96)}to{opacity:1; transform:none}}
+#wrapped .slide.on .pop{animation:wpop .7s cubic-bezier(.2,1.3,.3,1) both}
+@keyframes wpop{from{opacity:0; transform:scale(.4)}60%{transform:scale(1.08)}to{opacity:1; transform:scale(1)}}
+
+#wrapped .quote{font-size:clamp(19px,5.5vw,26px); font-weight:600; line-height:1.35; max-width:20ch; font-style:italic; margin:6px 0}
+#wrapped .word{font-size:clamp(40px,13vw,78px); font-weight:900; letter-spacing:-.02em; line-height:1.02}
+#wrapped .chapno{font-size:clamp(60px,20vw,120px); font-weight:900; opacity:.35; line-height:1}
+#wrapped .chaptitle{font-size:clamp(28px,8vw,44px); font-weight:900; margin-top:4px}
+
+/* reply-speed race bars */
+#wrapped .race{width:100%; max-width:320px; margin-top:26px; display:flex; flex-direction:column; gap:16px}
+#wrapped .race .row{text-align:left}
+#wrapped .race .who{display:flex; justify-content:space-between; font-weight:700; margin-bottom:6px; font-size:15px}
+#wrapped .bar{height:14px; border-radius:999px; background:rgba(255,255,255,.18); overflow:hidden}
+#wrapped .bar > i{display:block; height:100%; width:0; border-radius:999px; background:linear-gradient(90deg,#fff,rgba(255,255,255,.7)); transition:width 1s cubic-bezier(.2,.7,.2,1)}
+#wrapped .slide.on .bar > i{width:var(--w)}
+
+/* media breakdown bars */
+#wrapped .mbars{width:100%; max-width:300px; margin-top:24px; display:flex; flex-direction:column; gap:12px}
+#wrapped .mbars .m{text-align:left}
+#wrapped .mbars .lbl{display:flex; justify-content:space-between; font-weight:700; font-size:14px; margin-bottom:5px}
+#wrapped .mbars .track{height:16px; border-radius:999px; background:rgba(255,255,255,.16); overflow:hidden}
+#wrapped .mbars .track > i{display:block; height:100%; width:0; border-radius:999px; background:linear-gradient(90deg,#7ef,#4af); transition:width 1s cubic-bezier(.2,.7,.2,1)}
+#wrapped .slide.on .mbars .track > i{width:var(--w)}
+
+/* group top-talkers podium */
+#wrapped .podium{display:flex; align-items:flex-end; gap:12px; margin-top:30px; height:210px}
+#wrapped .col{flex:1; max-width:82px; display:flex; flex-direction:column; align-items:center; justify-content:flex-end}
+#wrapped .pod-name{font-size:13px; font-weight:700; margin-bottom:6px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%}
+#wrapped .col .bk{width:100%; border-radius:10px 10px 0 0; color:#fff; font-weight:900; display:flex; align-items:flex-start; justify-content:center; padding-top:8px; height:0; transition:height .9s cubic-bezier(.2,.7,.2,1)}
+#wrapped .slide.on .col .bk{height:var(--h)}
+
+/* mood chart */
+#wrapped .chart{width:100%; max-width:320px; margin-top:24px}
+#wrapped .chart svg{width:100%; height:auto; overflow:visible}
+#wrapped .chart .ln{fill:none; stroke-width:3; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:600; stroke-dashoffset:600}
+#wrapped .slide.on .chart .ln{animation:wdraw 1.6s ease forwards}
+@keyframes wdraw{to{stroke-dashoffset:0}}
+#wrapped .legend{display:flex; gap:16px; justify-content:center; margin-top:12px; font-size:13px; font-weight:700}
+#wrapped .legend .dot{display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:5px; vertical-align:middle}
+
+/* odometer number roll */
+#wrapped .odo{display:inline-flex; align-items:flex-end; justify-content:center}
+#wrapped .odo-col{display:inline-block; height:1em; line-height:1em; overflow:hidden}
+#wrapped .odo-reel{display:flex; flex-direction:column; transition:transform 1.3s cubic-bezier(.2,.85,.2,1)}
+#wrapped .odo-reel span{height:1em; line-height:1em}
+#wrapped .odo-sep{padding:0 .01em}
+
+/* chrome */
+#wrapped .wbars{position:absolute; top:12px; left:12px; right:12px; display:flex; gap:3px; z-index:20}
+#wrapped .wbars .seg{flex:1; height:3px; border-radius:2px; background:rgba(255,255,255,.28); overflow:hidden}
+#wrapped .wbars .seg > i{display:block; height:100%; width:0; background:#fff} #wrapped .wbars .seg.done > i{width:100%}
+#wrapped .wchrome{position:absolute; top:16px; right:12px; z-index:25; display:flex; gap:6px}
+#wrapped .wchrome button{width:34px; height:34px; border:none; border-radius:50%; cursor:pointer; font-size:16px; background:rgba(0,0,0,.3); color:#fff; backdrop-filter:blur(4px)}
+#wrapped .wshare{position:absolute; bottom:44px; right:16px; z-index:25; border:none; cursor:pointer; width:46px; height:46px; border-radius:50%; font-size:18px; background:rgba(255,255,255,.9); color:#111; box-shadow:0 8px 24px rgba(0,0,0,.35)}
+#wrapped .wtoast{position:absolute; bottom:96px; left:50%; transform:translateX(-50%); z-index:40; background:rgba(0,0,0,.82); color:#fff; padding:10px 18px; border-radius:12px; font-size:14px; font-weight:600; opacity:0; transition:opacity .25s; pointer-events:none} #wrapped .wtoast.show{opacity:1}
+
+/* end screen */
+#wrapped .wend{gap:0}
+#wrapped .wend .kicker{margin-bottom:14px}
+#wrapped .wendcard{width:100%; max-width:290px; border-radius:20px; padding:22px; text-align:left; background:linear-gradient(160deg,rgba(0,0,0,.28),rgba(0,0,0,.05)); box-shadow:0 18px 50px rgba(0,0,0,.4)}
+#wrapped .wendrow{display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:20px}
+#wrapped .wgbtn.ghost{background:rgba(255,255,255,.18); color:#fff}
+
+/* off-screen poster captured by html2canvas (Spotify-style tall share card) */
+#wrapped .wposter-wrap{position:absolute; left:-9999px; top:0}
+#wrapped .wposter{width:400px; padding:40px 34px; color:#fff; background:linear-gradient(165deg,#0b3d2e,#128c7e 55%,#25d366)}
+#wrapped .wposter .pt{font-size:13px; letter-spacing:.2em; font-weight:800; opacity:.85; text-transform:uppercase}
+#wrapped .wposter .pn{font-size:32px; font-weight:900; margin:6px 0 2px; line-height:1}
+#wrapped .wposter .ptitle{font-size:16px; opacity:.9; margin-bottom:20px}
+#wrapped .wposter .pbig{font-size:64px; font-weight:900; letter-spacing:-.03em; line-height:1}
+#wrapped .wposter .pbl{font-size:15px; opacity:.85; margin-bottom:20px}
+#wrapped .wposter .prow{display:flex; justify-content:space-between; padding:11px 0; border-top:1px solid rgba(255,255,255,.2); font-size:16px}
+#wrapped .wposter .prow b{font-weight:900}
+#wrapped .wposter .pfoot{margin-top:20px; font-size:12px; opacity:.7; text-align:center}
+/* the visible end card reuses poster inner classes but constrained to card width */
+#wrapped .wendcard .pt{font-size:11px; letter-spacing:.18em; font-weight:800; opacity:.8; text-transform:uppercase}
+#wrapped .wendcard .pn{font-size:22px; font-weight:900; margin:3px 0 2px}
+#wrapped .wendcard .ptitle{font-size:14px; opacity:.85; margin-bottom:12px}
+#wrapped .wendcard .pbig{font-size:38px; font-weight:900; line-height:1}
+#wrapped .wendcard .pbl{font-size:13px; opacity:.8; margin-bottom:10px}
+#wrapped .wendcard .prow{display:flex; justify-content:space-between; padding:7px 0; border-top:1px solid rgba(255,255,255,.16); font-size:14px}
+#wrapped .wendcard .pfoot{display:none}
+#wrapped .wbrand{position:absolute; top:24px; left:16px; z-index:15; font-size:12px; font-weight:800; letter-spacing:.14em; opacity:.85; pointer-events:none}
+#wrapped .wbrand b{color:#25d366}
+#wrapped .wtap{position:absolute; top:60px; bottom:70px; z-index:18}
+#wrapped .wprev{left:0; width:30%} #wrapped .wnext{right:0; width:70%}
+#wrapped .whint{position:absolute; bottom:24px; left:0; right:0; text-align:center; font-size:11px; opacity:.45; z-index:15; pointer-events:none}
+
+#wrapped .wfx{position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:7}
+#wrapped .confetti,#wrapped .rainmoji{position:absolute; will-change:transform}
+#wrapped .rainmoji{font-size:26px}
+@keyframes wfall{to{transform:translateY(112vh) rotate(var(--r))}}
+
+/* end-card buttons */
+#wrapped .wgbtn{padding:14px 28px; border:none; border-radius:999px; font-weight:800; font-size:16px; cursor:pointer; background:#fff; color:#111; box-shadow:0 8px 24px rgba(0,0,0,.3)}
+#wrapped .wgbtn:active{transform:scale(.95)}
+
+/* spice meter */
+#wrapped .spice-meter{width:220px; height:16px; border-radius:999px; background:rgba(255,255,255,.15); overflow:hidden; margin-top:8px}
+#wrapped .spice-meter > i{display:block; height:100%; width:0; border-radius:999px; background:linear-gradient(90deg,#ffb347,#ff5e62,#c31432); transition:width 1.3s cubic-bezier(.2,.7,.2,1)}
+#wrapped .slide.on .spice-meter > i{width:var(--w)}
+
+/* award badge + countdown */
+#wrapped .badge{width:150px; height:150px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:74px; background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.35),rgba(255,255,255,.06)); box-shadow:0 0 0 6px rgba(255,255,255,.18),0 18px 50px rgba(0,0,0,.4)}
+#wrapped .count3{font-size:clamp(90px,30vw,180px); font-weight:900; animation:wpop .5s cubic-bezier(.2,1.3,.3,1) both}
+
+/* launch button in the share bar */
+#share .wrapped-launch{background:linear-gradient(135deg,#8e2de2,#4a00e0); color:#fff; font-weight:800}
